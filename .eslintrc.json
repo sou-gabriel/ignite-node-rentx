@@ -19,6 +19,7 @@
         "only-warn"
     ],
     "rules": {
+        "no-unused-vars": "off",
         "camelcase": "off",
         "import/no-unresolved": "error",
         "@typescript-eslint/naming-convention": [
