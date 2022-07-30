@@ -5,7 +5,7 @@ interface ICreateCategoryDTO {
   description: string
 }
 
-class CategoryRepository {
+export class CategoriesRepository {
   private categories: Category[]
 
   constructor () {
@@ -26,5 +26,3 @@ class CategoryRepository {
     return this.categories.find(category => category.name === name)
   }
 }
-
-export const categoryRepository = new CategoryRepository()
