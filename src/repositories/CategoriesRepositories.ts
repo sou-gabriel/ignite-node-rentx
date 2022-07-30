@@ -17,6 +17,10 @@ class CategoryRepository {
 
     this.categories.push(category)
   }
+
+  findAll (): Category[] {
+    return this.categories
+  }
 }
 
 export const categoryRepository = new CategoryRepository()

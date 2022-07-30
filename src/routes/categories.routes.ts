@@ -10,3 +10,8 @@ categoriesRoutes.post('/', (request, response) => {
   categoryRepository.create({ name, description })
   return response.status(201).send()
 })
+
+categoriesRoutes.get('/', (request, response) => {
+  const allCategories = categoryRepository.findAll()
+  return response.json(allCategories)
+})
