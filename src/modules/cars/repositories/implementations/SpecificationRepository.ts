@@ -4,8 +4,19 @@ import { ICreateSpecificationDto, ISpecificationRepository } from '../ISpecifica
 export class SpecificationsRepository implements ISpecificationRepository {
   private specifications: Specification[]
 
-  constructor () {
+  // eslint-disable-next-line no-use-before-define
+  private static INSTANCE: SpecificationsRepository
+
+  private constructor () {
     this.specifications = []
+  }
+
+  public static getInstance () {
+    if (!this.INSTANCE) {
+      this.INSTANCE = new SpecificationsRepository()
+    }
+
+    return this.INSTANCE
   }
 
   create ({ name, description }: ICreateSpecificationDto) {
