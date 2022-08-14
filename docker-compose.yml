@@ -15,7 +15,7 @@ services:
       - pgdata:/data/postgres
   app: 
     build: .
-    container_name: rentx
+    container_name: api_rentx
     ports: 
       - 3333:3333
     volumes:
