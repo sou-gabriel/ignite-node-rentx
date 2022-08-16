@@ -1,13 +1,13 @@
 import { Specification } from '../../entities/Specification'
-import { ICreateSpecificationDto, ISpecificationRepository } from '../ISpecificationsRepository'
+import { ICreateSpecificationDto, ISpecificationsRepository } from '../ISpecificationsRepository'
 
-export class SpecificationsRepository implements ISpecificationRepository {
+export class SpecificationsRepository implements ISpecificationsRepository {
   private specifications: Specification[]
 
   // eslint-disable-next-line no-use-before-define
   private static INSTANCE: SpecificationsRepository
 
-  private constructor () {
+  constructor () {
     this.specifications = []
   }
 

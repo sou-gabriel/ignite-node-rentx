@@ -5,7 +5,7 @@ export interface ICreateSpecificationDto {
   description: string
 }
 
-export interface ISpecificationRepository {
+export interface ISpecificationsRepository {
   create({ name, description }: ICreateSpecificationDto): void
   findByName(name: string): Specification | undefined
 }
