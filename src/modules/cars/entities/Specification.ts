@@ -1,21 +1,23 @@
+import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm'
 import { v4 as uuidv4 } from 'uuid'
 
+@Entity('specifications')
 export class Specification {
-  id!: string
-  created_at!: Date
-  name!: string
-  description!: string
+  @PrimaryColumn('uuid')
+    id?: string
 
-  constructor (name: string, description: string) {
-    this.name = name
-    this.description = description
+  @Column()
+    name!: string
 
+  @Column()
+    description!: string
+
+  @CreateDateColumn()
+    created_at!: Date
+
+  constructor () {
     if (!this.id) {
       this.id = uuidv4()
-    }
-
-    if (!this.created_at) {
-      this.created_at = new Date()
     }
   }
 }
