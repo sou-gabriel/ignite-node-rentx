@@ -28,6 +28,9 @@ export const ensureAuthenticated = (request: Request, response: Response, next: 
       throw new AppError('User does not exists!', 401)
     }
 
+    request.user = {
+      id: user_id
+    }
     next()
   } catch (error) {
     throw new AppError('Invalid token!', 401)
