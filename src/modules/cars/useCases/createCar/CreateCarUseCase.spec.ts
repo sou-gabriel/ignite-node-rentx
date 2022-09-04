@@ -60,7 +60,7 @@ describe('Create Car', () => {
       brand: 'Brand',
       category_id: 'category'
     })
-
+    console.log('Car', car)
     expect(car.available).toBe(true)
   })
 })

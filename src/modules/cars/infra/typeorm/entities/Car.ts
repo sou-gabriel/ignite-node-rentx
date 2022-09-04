@@ -43,5 +43,9 @@ export class Car {
     if (!this.id) {
       this.id = uuidV4()
     }
+
+    if (this.available === undefined) {
+      this.available = true
+    }
   }
 }

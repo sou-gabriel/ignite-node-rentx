@@ -43,4 +43,29 @@ export class CarsRepository implements ICarsRepository {
 
     return car
   }
+
+  async findAvailable (
+    brand?: string | undefined,
+    category_id?: string | undefined,
+    name?: string | undefined
+  ): Promise<Car[]> {
+    const carsQuery = this.repository
+      .createQueryBuilder('car')
+      .where('car.available = :available', { available: true })
+
+    if (brand) {
+      carsQuery.andWhere('car.brand = :brand', { brand })
+    }
+
+    if (category_id) {
+      carsQuery.andWhere('car.category_id = :category_id', { category_id })
+    }
+
+    if (name) {
+      carsQuery.andWhere('car.name = :name', { name })
+    }
+
+    const cars = await carsQuery.getMany()
+    return cars
+  }
 }
