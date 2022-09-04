@@ -9,8 +9,6 @@ export const ensureAdmin = async (request: Request, response: Response, next: Ne
   const usersRepository = new UsersRepository()
   const user = await usersRepository.findById(id)
 
-  console.log(user)
-
   if (!user?.is_admin) {
     throw new AppError('User is not admin!')
   }
