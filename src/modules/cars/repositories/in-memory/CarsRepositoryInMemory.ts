@@ -40,4 +40,8 @@ export class CarsRepositoryInMemory implements ICarsRepository {
     return this.cars
       .filter(car => car.available || (brand && car.brand === brand) || (category_id && car.category_id === category_id) || (name && car.name === name))
   }
+
+  async findById (id: string): Promise<Car | undefined> {
+    return this.cars.find(car => car.id === id)
+  }
 }

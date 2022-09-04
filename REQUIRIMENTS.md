@@ -39,8 +39,6 @@ Ex.: Não deve ser possível cadastrar uma categoria com um nome já existente o
 
 **RF** 
 - Deve ser possível cadastrar uma especificação para um carro.
-- Deve ser possível listar todas as especificações.
-- Deve ser possível listar todos os carros.
 
 **RN**
 - Não deve ser possível cadastrar uma especificação para um carro não cadastrado.
