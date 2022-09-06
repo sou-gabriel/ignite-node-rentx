@@ -1,7 +1,9 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn } from 'typeorm'
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn } from 'typeorm'
 import { v4 as uuidV4 } from 'uuid'
 
-@Entity()
+import { Car } from './Car'
+
+@Entity('car_images')
 export class CarImage {
   @PrimaryColumn()
     id!: string
@@ -14,6 +16,10 @@ export class CarImage {
 
   @CreateDateColumn()
     created_at!: Date
+
+  @ManyToOne(() => Car, (car) => car.carImage)
+  @JoinColumn({ name: 'car_id' })
+    car!: Car
 
   constructor () {
     if (!this.id) {
