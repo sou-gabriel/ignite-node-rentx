@@ -1,4 +1,4 @@
-import { getRepository, Repository } from 'typeorm'
+import { getRepository, Repository, UpdateResult } from 'typeorm'
 
 import { ICreateCarDTO } from '@modules/cars/dtos/ICreateCarDTO'
 import { ICarsRepository } from '@modules/cars/repositories/ICarsRepository'
@@ -76,5 +76,16 @@ export class CarsRepository implements ICarsRepository {
   async findById (id: string): Promise<Car | undefined> {
     const car = await this.repository.findOne(id)
     return car
+  }
+
+  async updateAvailable (id: string, available: boolean): Promise<void> {
+    await this.repository
+      .createQueryBuilder()
+      .update()
+      .set({ available })
+      .where('id = :id')
+      .setParameters({ id })
+      .execute()
+    // UPDATE cars SET available = 'true' WHERE id = :id
   }
 }
