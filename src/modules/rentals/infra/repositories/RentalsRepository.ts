@@ -24,4 +24,8 @@ export class RentalsRepository implements IRentalsRepository {
     const rental = this.repository.create(data)
     return this.repository.save(rental)
   }
+
+  findById (id: string): Promise<Rental | undefined> {
+    return this.repository.findOne(id)
+  }
 }
