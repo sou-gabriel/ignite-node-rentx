@@ -1,4 +1,4 @@
-import { inject } from 'tsyringe'
+import { inject, injectable } from 'tsyringe'
 
 import { Rental } from '@modules/rentals/infra/entities/Rental'
 
@@ -12,6 +12,7 @@ interface IRequest {
   user_id: string;
 }
 
+@injectable()
 export class DevolutionRentalUseCase {
   constructor (
     @inject('RentalsRepository')
@@ -24,12 +25,13 @@ export class DevolutionRentalUseCase {
 
   async execute ({ id }: IRequest): Promise<Rental> {
     const rental = await this.rentalsRepository.findById(id)
-    const car = await this.carsRepository.findById(id)
     const minimumDaily = 1
 
     if (!rental) {
       throw new AppError('Rental does not exists!')
     }
+
+    const car = await this.carsRepository.findById(rental.car_id)
 
     if (!car) {
       throw new AppError('Car not found!')
