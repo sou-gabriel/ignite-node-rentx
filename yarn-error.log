@@ -1,20 +1,30 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\gabri\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add cross-env
+  /Users/gabrielramos/.nvm/versions/node/v16.17.0/bin/node /Users/gabrielramos/.nvm/versions/node/v16.17.0/bin/yarn add node-mailter
 
 PATH: 
-  C:\Users\gabri\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\gabri\bin;C:\Python310\Scripts;C:\Python310;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files\Git\cmd;C:\Program Files\nodejs;C:\ProgramData\chocolatey\bin;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\OpenJDK\openjdk-11.0.16_8\bin;C:\Users\gabri\AppData\Local\Microsoft\WindowsApps;C:\Users\gabri\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\gabri\AppData\Roaming\npm;C:\Users\gabri\AppData\Local\Programs\Hyper\resources\bin;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+  /Users/gabrielramos/.nvm/versions/node/v16.17.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Library/Apple/usr/bin:/Users/gabrielramos/.nvm/versions/node/v16.17.0/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/Users/gabrielramos/Library/Android/sdk/emulator:/Users/gabrielramos/Library/Android/sdk/platform-tools
 
 Yarn version: 
   1.22.19
 
 Node version: 
-  16.16.0
+  16.17.0
 
 Platform: 
-  win32 x64
+  darwin arm64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\Users\gabri\www\learning\ignite\node\chapter-ii\rentx\node_modules\.bin\ts-node-dev'
+  Error: https://registry.yarnpkg.com/node-mailter: Not found
+      at Request.params.callback [as _callback] (/Users/gabrielramos/.nvm/versions/node/v16.17.0/lib/node_modules/yarn/lib/cli.js:66145:18)
+      at Request.self.callback (/Users/gabrielramos/.nvm/versions/node/v16.17.0/lib/node_modules/yarn/lib/cli.js:140890:22)
+      at Request.emit (node:events:513:28)
+      at Request.<anonymous> (/Users/gabrielramos/.nvm/versions/node/v16.17.0/lib/node_modules/yarn/lib/cli.js:141862:10)
+      at Request.emit (node:events:513:28)
+      at IncomingMessage.<anonymous> (/Users/gabrielramos/.nvm/versions/node/v16.17.0/lib/node_modules/yarn/lib/cli.js:141784:12)
+      at Object.onceWrapper (node:events:627:28)
+      at IncomingMessage.emit (node:events:525:35)
+      at endReadableNT (node:internal/streams/readable:1358:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
 
 npm manifest: 
   {
@@ -25,11 +35,12 @@ npm manifest:
     "scripts": {
       "dev": "ts-node-dev -r tsconfig-paths/register --poll --transpile-only --respawn --ignore-watch node_modules --respawn src/shared/infra/http/server.ts",
       "typeorm": "ts-node-dev -r tsconfig-paths/register ./node_modules/typeorm/cli",
-      "test": "NODE_ENV=test jest",
+      "test": "cross-env NODE_ENV=test jest --runInBand --detectOpenHandles",
       "seed:admin": "ts-node-dev src/shared/infra/typeorm/seeds/admin.ts"
     },
     "dependencies": {
       "bcryptjs": "^2.4.3",
+      "cross-env": "^7.0.3",
       "csv-parse": "^5.3.0",
       "dayjs": "^1.11.5",
       "express": "^4.18.1",
@@ -1569,7 +1580,14 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/create-require/-/create-require-1.1.1.tgz#c1d7e8f1e5f6cfc9ff65f9cd352d37348756c333"
     integrity sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==
   
-  cross-spawn@^7.0.2, cross-spawn@^7.0.3:
+  cross-env@^7.0.3:
+    version "7.0.3"
+    resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-7.0.3.tgz#865264b29677dc015ba8418918965dd232fc54cf"
+    integrity sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==
+    dependencies:
+      cross-spawn "^7.0.1"
+  
+  cross-spawn@^7.0.1, cross-spawn@^7.0.2, cross-spawn@^7.0.3:
     version "7.0.3"
     resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.3.tgz#f73a85b9d5d41d045551c177e2882d4ac85728a6"
     integrity sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==
