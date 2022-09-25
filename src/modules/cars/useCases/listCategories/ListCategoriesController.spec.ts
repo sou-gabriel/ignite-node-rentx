@@ -33,7 +33,7 @@ describe('List Categories Controller', () => {
       password: 'admin'
     })
 
-    const { token } = sessionsResponse.body
+    const { refresh_token } = sessionsResponse.body
 
     await request(app)
       .post('/categories')
@@ -42,7 +42,7 @@ describe('List Categories Controller', () => {
         description: 'Category Supertest'
       })
       .set({
-        Authorization: `Bearer ${token}`
+        Authorization: `Bearer ${refresh_token}`
       })
 
     const categoriesResponse = await request(app).get('/categories')
