@@ -1,8 +1,8 @@
 import { inject, injectable } from 'tsyringe'
 
 import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository'
+import { IStorageProvider } from '@shared/container/providers/StorageProvider/IStorageProvider'
 import { AppError } from '@shared/errors/AppError'
-import { deleteFile } from '@utils/file'
 
 interface IRequest {
   id: string
@@ -13,7 +13,9 @@ interface IRequest {
 export class UpdateUserAvatarUseCase {
   constructor (
     @inject('UsersRepository')
-    private usersRepository: IUsersRepository
+    private usersRepository: IUsersRepository,
+    @inject('StorageProvider')
+    private storageProvider: IStorageProvider
   ) {}
 
   async execute ({ id, avatarFile }: IRequest): Promise<void> {
@@ -24,8 +26,10 @@ export class UpdateUserAvatarUseCase {
     }
 
     if (user.avatar) {
-      await deleteFile(`./tmp/avatar/${user.avatar}`)
+      await this.storageProvider.delete('avatar', user.avatar)
     }
+
+    await this.storageProvider.save('avatar', avatarFile)
 
     user.avatar = avatarFile
 
