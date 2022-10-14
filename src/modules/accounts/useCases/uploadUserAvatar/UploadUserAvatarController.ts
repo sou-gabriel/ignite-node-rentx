@@ -1,17 +1,16 @@
 import { Request, Response } from 'express'
 import { container } from 'tsyringe'
 
-import { UpdateUserAvatarUseCase } from './UpdateUserAvatarUseCase'
+import { UploadUserAvatarUseCase } from './UploadUserAvatarUseCase'
 
-export class UpdateUserAvatarController {
+export class UploadUserAvatarController {
   async handle (request: Request, response: Response): Promise<Response> {
     const { id } = request.user
     const avatarFile = request.file?.filename!
 
-    // Receber arquivo
-    const updateUserAvatarUseCase = container.resolve(UpdateUserAvatarUseCase)
+    const uploadUserAvatarUseCase = container.resolve(UploadUserAvatarUseCase)
 
-    updateUserAvatarUseCase.execute({ id, avatarFile })
+    uploadUserAvatarUseCase.execute({ id, avatarFile })
 
     return response.status(200).send()
   }
