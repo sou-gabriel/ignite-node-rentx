@@ -11,6 +11,8 @@ export class LocalStorageProvider implements IStorageProvider {
       resolve(upload.tmpFolder, file),
       resolve(`${upload.tmpFolder}/${folder}`, file)
     )
+
+    return file
   }
 
   async delete (folder: string, file: string) {
