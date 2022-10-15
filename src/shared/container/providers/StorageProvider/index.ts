@@ -1,5 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
-import 'dotenv/config'
 import { container } from 'tsyringe'
 
 import { LocalStorageProvider } from './implementations/LocalStorageProvider'
