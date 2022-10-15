@@ -1,6 +1,4 @@
 import { UsersRepositoryInMemory } from '@modules/accounts/repositories/in-memory/UserRepositoryInMemory'
-import { UsersTokensRepositoryInMemory } from '@modules/accounts/repositories/in-memory/UsersTokensRepositoryInMemory'
-import { DayjsDateProvider } from '@shared/container/providers/DateProvider/implementations/DayjsDateProvider'
 import { AppError } from '@shared/errors/AppError'
 
 import { DayjsDateProvider } from '../../../../shared/container/providers/DateProvider/implementations/DayjsDateProvider'
