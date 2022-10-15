@@ -4,8 +4,6 @@ import { verify } from 'jsonwebtoken'
 import auth from '@config/auth'
 import { AppError } from '@shared/errors/AppError'
 
-import { UsersTokensRepository } from '../../../../modules/accounts/infra/typeorm/repositories/UsersTokens'
-
 interface IPayload {
   sub: string
 }

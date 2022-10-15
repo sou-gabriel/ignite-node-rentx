@@ -5,6 +5,7 @@ import swaggerUi from 'swagger-ui-express'
 
 import '@shared/container'
 
+import upload from '@config/upload'
 import { AppError } from '@shared/errors/AppError'
 
 import swaggerDocument from '../../../swagger.json'
@@ -17,6 +18,8 @@ export const app = express()
 app.use(express.json())
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
+app.use('/avatar', express.static(`${upload.tmpFolder}/avatar`))
+app.use('/avatar', express.static(`${upload.tmpFolder}/cars`))
 
 app.use(router)
 
