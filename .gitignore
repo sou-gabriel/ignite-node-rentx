@@ -1,7 +1,7 @@
 node_modules
+.vscode
+tmp/*
 coverage
-*.lcov
-temp
-tmp
 .env
+!tmp/.gitkeep
 dist
